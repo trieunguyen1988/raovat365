@@ -1,0 +1,5 @@
+1. Tạo table
+	php artisan make:migration create_admin
+	
+2. Thực thi migrate tạo table.
+	php artisan migrate
