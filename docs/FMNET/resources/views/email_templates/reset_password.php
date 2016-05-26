@@ -1,0 +1,2 @@
+Hi <?php echo $user->user_name?$user->user_name:$user->email?>,<br>
+Please click <a href="<?php echo Request::root().'/user/change_password?url='. Crypt::encrypt($user->user_id).'&u='.urlencode(Crypt::encrypt($user->email))?>">here</a> for reset your password<br>

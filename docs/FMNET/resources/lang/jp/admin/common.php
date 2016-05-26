@@ -1,0 +1,26 @@
+<?php
+
+return [
+    'SITE_NAME' => 'FMNET Admin',
+    'PAGE_TITLE' => 'FMNET Admin',
+    'LOGIN_TITLE' => 'ログイン',
+    'USER_LOGOUT' => 'ログアウト',
+    'MAIL_ADDRESS' => 'メールアドレス',
+    'PASSWORD' => 'パスワード',
+    'PASSWORD_CONFIRM' => 'パスワード確認',
+    'BASIC_PLAN' => '基本プラン',
+    'BTN_UPDATE' => '更新',
+    'BTN_CREATE' => '登録',
+    'BTN_SEARCH' => '検索',
+    'BTN_DELETE' => '削除',
+    'BTN_CSV_OUTPUT' => '結果をCSVに出力する',
+    'REQUIRED' => '必須',
+    'TRY_AGAIN' => 'Please try again',
+    'MONTH' => '月',
+    'YEAR' => '年',
+    'PLEASE_SELECT' => '選択してください',
+    'BACK_BTN' => '戻る',
+    'USER_MANAGEMENT' => '会員検索',
+    'SHOP_MANAGEMENT' => '店舗検索',
+    'ACCOUNT_MANAGEMENT' => '管理者アカウント',
+];
