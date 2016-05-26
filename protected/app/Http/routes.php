@@ -16,6 +16,14 @@ Route::get('/', function () {
 });
 
 Route::group(['namespace' => 'Admin', 'middleware' => ['admin'],'prefix' => 'admin'], function() {
+	Route::get('/',
+        ['uses' => 'IndexController@index']
+    );
+
     Route::get('login',
-        ['as' => 'admin.getUserLogin', 'uses' => 'Auth\AuthController@login']);    
+        ['as' => 'admin.getAdminLogin', 'uses' => 'Auth\AuthController@login']
+    );
+    Route::post('login', 
+    	['as' => 'admin.postAdminLogin', 'uses' => 'Auth\AuthController@login']
+    );
 });

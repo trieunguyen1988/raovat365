@@ -43,6 +43,7 @@ class AuthController extends Controller
     }
     public function login(Request $request)
     {
+        //$datas = $request->session()->all();
         $template = 'admin.auth.login';
         $data['title'] = trans('common.LOGIN_TITLE');
         $request->flash();
@@ -61,7 +62,7 @@ class AuthController extends Controller
                 'password' => $request->password,
             ];
             if(\Auth::guard('admin')->attempt($login, isset($request->remember)?true:false)){
-                return redirect('admin/user');
+                return redirect('admin');
             } else {
                 $data['login_errors'] = trans('auth.failed');
                 return view($template, $data);
