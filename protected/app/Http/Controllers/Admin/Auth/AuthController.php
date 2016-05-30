@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Requests;
-use App\User;
-use Validator;
+// use App\User;
+// use Validator;
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\ThrottlesLogins;
-use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+// use Illuminate\Foundation\Auth\ThrottlesLogins;
+// use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 //use Symfony\Component\HttpFoundation\Request;
 use Illuminate\Http\Request;
 use App\Http\Requests\Admin\LoginRequest;
@@ -25,15 +25,15 @@ class AuthController extends Controller
     |
     */
 
-    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+    // use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
-    protected $guard = 'admin';
+    // protected $guard = 'admin';
     /**
      * Where to redirect users after login / registration.
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    // protected $redirectTo = '/';
 
     /**
      * Create a new authentication controller instance.
@@ -53,9 +53,7 @@ class AuthController extends Controller
     }
 
     public function postLogin(LoginRequest $request){
-        die('fffff');
-        echo '<pre/>';
-        print_r($request);
+        
     }
 
     /**
@@ -64,11 +62,11 @@ class AuthController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function loginValidator(array $data)
-    {
-        return Validator::make($data, [
-            'email' => 'required|email|max:255',
-            'password' => 'required',
-        ]);
-    }
+    // protected function loginValidator(array $data)
+    // {
+    //     return Validator::make($data, [
+    //         'email' => 'required|email|max:255',
+    //         'password' => 'required',
+    //     ]);
+    // }
 }
