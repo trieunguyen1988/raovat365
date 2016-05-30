@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Admin\Auth;
 
+use App\Http\Requests;
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
-use Symfony\Component\HttpFoundation\Request;
+//use Symfony\Component\HttpFoundation\Request;
+use Illuminate\Http\Request;
+use App\Http\Requests\Admin\LoginRequest;
 
 class AuthController extends Controller
 {
@@ -41,34 +44,20 @@ class AuthController extends Controller
     {
 //        $this->middleware('guest', ['except' => 'logout']);
     }
-    public function login(Request $request)
+    public function getLogin()
     {
         //$datas = $request->session()->all();
         $template = 'admin.auth.login';
         $data['title'] = trans('common.LOGIN_TITLE');
-        $request->flash();
-        if($request->isMethod('get')) {
-            return view($template, $data);
-        }
-        else if($request->isMethod('post')) {
-            $validate = $this->loginValidator($request->all());
-            if($validate->fails()) {
-                $data['errors'] = $validate->errors();
-                return view($template, $data);
-            }
-            //Do login
-            $login  = [
-                'email' => $request->email,
-                'password' => $request->password,
-            ];
-            if(\Auth::guard('admin')->attempt($login, isset($request->remember)?true:false)){
-                return redirect('admin');
-            } else {
-                $data['login_errors'] = trans('auth.failed');
-                return view($template, $data);
-            }
-        }
+        return view($template, $data);
     }
+
+    public function postLogin(LoginRequest $request){
+        die('fffff');
+        echo '<pre/>';
+        print_r($request);
+    }
+
     /**
      * Get a validator for an incoming login request.
      *

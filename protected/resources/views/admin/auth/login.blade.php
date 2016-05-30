@@ -8,14 +8,16 @@
     <body>
         <div class="container">
             <section id="content">
-                <form class="form-login" action="{{ url('/admin/login') }}" method="POST">
+                <form class="form-login" action="" method="POST">
                     <h1>Đăng Nhập</h1>
-                    @if (isset($login_errors))
-                    <div class="has-error">
-                        <span class="help-block">
-                            <strong>{{ $login_errors }}</strong>
-                        </span>
-                    </div>
+                    @if (count($errors) > 0)
+                    @foreach ($errors->all() as $error)
+                        <div class="has-error">
+                            <span class="help-block">
+                                <strong>{!! $error !!}</strong>
+                            </span>
+                        </div>
+                    @endforeach
                     @endif
                     <div>
                         <input type="text" placeholder="Email" id="email" name="email" />
