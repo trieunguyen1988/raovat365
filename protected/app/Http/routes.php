@@ -21,9 +21,9 @@ Route::group(['namespace' => 'Admin', 'middleware' => ['admin'],'prefix' => 'adm
     );
 
     Route::get('login',
-        ['as' => 'admin.getAdminLogin', 'uses' => 'Auth\AuthController@login']
+        ['as' => 'getLogin', 'uses' => 'Auth\AuthController@getLogin']
     );
     Route::post('login', 
-    	['as' => 'admin.postAdminLogin', 'uses' => 'Auth\AuthController@login']
+    	['as' => 'postLogin', 'uses' => 'Auth\AuthController@postLogin']
     );
 });
