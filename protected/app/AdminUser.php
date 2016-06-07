@@ -7,7 +7,7 @@ use Illuminate\Auth\Authenticable as AuthenticableTrait;
 
 class AdminUser extends Model implements \Illuminate\Contracts\Auth\Authenticatable
 {
-    protected $table = 'admin';
+    protected $table = 'admingg';
     protected $primaryKey = 'email';
     public $timestamps = false;
     //public $incrementing = false;

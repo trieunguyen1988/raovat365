@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Admin\Auth;
 
+use Illuminate\Contracts\Auth\Guard;
 use App\Http\Requests;
-// use App\User;
+use App\Models\Admin\Login;
 // use Validator;
 use App\Http\Controllers\Controller;
-// use Illuminate\Foundation\Auth\ThrottlesLogins;
-// use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
-//use Symfony\Component\HttpFoundation\Request;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
+use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Http\Request;
 use App\Http\Requests\Admin\LoginRequest;
 
@@ -25,9 +25,9 @@ class AuthController extends Controller
     |
     */
 
-    // use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
-    // protected $guard = 'admin';
+    protected $guard = 'admin';
     /**
      * Where to redirect users after login / registration.
      *
@@ -40,9 +40,12 @@ class AuthController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Guard $auth)
     {
 //        $this->middleware('guest', ['except' => 'logout']);
+        $this->auth = $auth;
+        $this->redirectPath = 'admin';
+        $this->middleware('guest', ['except' => 'getLogout']);
     }
     public function getLogin()
     {
@@ -53,7 +56,18 @@ class AuthController extends Controller
     }
 
     public function postLogin(LoginRequest $request){
-        
+        $auth = array(
+            'email' => $request->email,
+            'password' => $request->password
+        );
+
+        if (\Auth::guard('admin')->attempt($auth)){
+            $admin = \Auth::guard('admin')->login();
+            echo '<pre/>';
+            print_r($admin);
+        } else {
+            echo 'Login thất bại';
+        }
     }
 
     /**
